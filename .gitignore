@@ -1,2 +1,2 @@
-argocd-chart/charts
-argocd-chart/Chart.lock
+argocd/charts
+argocd/Chart.lock
