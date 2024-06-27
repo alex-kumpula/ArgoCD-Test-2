@@ -1,0 +1,3 @@
+source:
+  repoURL: https://github.com/alex-kumpula/ArgoCD-Test-2.git
+  path: argocd-bootstrap
