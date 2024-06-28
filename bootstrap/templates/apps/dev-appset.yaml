@@ -16,7 +16,9 @@ spec:
     metadata:
       name: '{{`{{.path.basename}}`}}'
     spec:
-      project: '{{`{{or (index . .project) "default"}}`}}'
+      # project: '{{`{{or (index . ".project") "default"}}`}}'
+      project: default
+      
       source:
         repoURL: {{ .Values.source.repoURL }}
         targetRevision: HEAD
