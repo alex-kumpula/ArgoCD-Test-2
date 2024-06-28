@@ -18,7 +18,6 @@ spec:
     spec:
       # project: '{{`{{or (index . ".project") "default"}}`}}'
       project: default
-      
       source:
         repoURL: {{ .Values.source.repoURL }}
         targetRevision: HEAD
@@ -29,6 +28,8 @@ spec:
       syncPolicy:
         syncOptions:
         - CreateNamespace=true
-        automated: 
-          prune: true 
+        automated:
+        {{`{{- if .project }}`}}
+          prune: true
+        {{`{{- end }}`}}
           selfHeal: true
