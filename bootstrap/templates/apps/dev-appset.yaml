@@ -28,9 +28,12 @@ spec:
       syncPolicy:
         syncOptions:
         - CreateNamespace=true
-        {{`{{- if .project }}`}}
+  templatePatch: |
+    {{`{{- if .project }}`}}
+    spec:
+      syncPolicy:
         automated:
           prune: true
           selfHeal: true
-        {{`{{- end }}`}}
+    {{`{{- end }}`}}
           
