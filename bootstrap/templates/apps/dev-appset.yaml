@@ -28,6 +28,9 @@ spec:
       syncPolicy:
         syncOptions:
         - CreateNamespace=true
+        automated:
+          prune: false
+  # {{- if index . "project" }} is a way of saying "if .project exists"
   templatePatch: |
     {{`{{- if index . "project" }}`}}
     spec:
@@ -36,4 +39,3 @@ spec:
           prune: true
           selfHeal: true
     {{`{{- end }}`}}
-          
