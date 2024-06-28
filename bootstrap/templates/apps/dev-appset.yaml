@@ -7,11 +7,26 @@ spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
-  - git:
-      repoURL: {{ .Values.source.repoURL }}
-      revision: HEAD
-      directories:
-      - path: apps/*
+  - merge:
+      mergeKeys:
+        # Note that this would not work with goTemplate enabled,
+        # nested merge keys are not supported there.
+        - path.basename
+      generators:
+        # Assuming, all configured clusters have a label for their location:
+        # Set the selector to this location.
+        - git:
+            repoURL: {{ .Values.source.repoURL }}
+            revision: HEAD
+            directories:
+            - path: apps/**/config.json
+        # The git repo may have different directories which correspond to the
+        # cluster locations, using these as a selector.
+        - git:
+            repoURL: {{ .Values.source.repoURL }}
+            revision: HEAD
+            directories:
+            - path: apps/*
   template:
     metadata:
       name: '{{`{{.path.basename}}`}}'
