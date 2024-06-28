@@ -10,7 +10,7 @@ spec:
   - git:
       repoURL: {{ .Values.source.repoURL }}
       revision: HEAD
-      directories:
+      files:
       - path: apps/**/config.json
   template:
     metadata:
