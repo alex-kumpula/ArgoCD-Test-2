@@ -28,8 +28,9 @@ spec:
       syncPolicy:
         syncOptions:
         - CreateNamespace=true
-        automated:
         {{`{{- if .project }}`}}
+        automated:
           prune: true
-        {{`{{- end }}`}}
           selfHeal: true
+        {{`{{- end }}`}}
+          
