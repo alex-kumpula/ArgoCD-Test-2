@@ -29,7 +29,7 @@ spec:
         syncOptions:
         - CreateNamespace=true
   templatePatch: |
-    {{`{{- if .project }}`}}
+    {{`{{- if index . "project" }}`}}
     spec:
       syncPolicy:
         automated:
