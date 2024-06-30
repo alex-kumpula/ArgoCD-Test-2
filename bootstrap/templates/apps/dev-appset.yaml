@@ -36,6 +36,3 @@ spec:
           prune: true
           selfHeal: true
           {{`{{- end }}`}}
-  # {{- if index . "project" }} is a way of saying "if .project exists"
-  # because some config.json files might not have it defined (and we want
-  # that to be okay)
