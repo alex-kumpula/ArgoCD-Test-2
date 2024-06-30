@@ -31,6 +31,8 @@ spec:
         automated:
           prune: false
   # {{- if index . "project" }} is a way of saying "if .project exists"
+  # because some config.json files might not have it defined (and we want
+  # that to be okay)
   templatePatch: |
     {{`{{- if index . "project" }}`}}
     spec:
