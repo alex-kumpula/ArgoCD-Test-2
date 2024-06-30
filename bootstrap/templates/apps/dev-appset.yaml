@@ -29,10 +29,12 @@ spec:
         syncOptions:
         - CreateNamespace=true
         automated:
-          {{`{{- if index . "project" }}`}}
           prune: false
-          selfHeal: false
-          {{`{{- else }}`}}
+  templatePatch: |
+    {{`{{- if index . "project" }}`}}
+    spec:
+      syncPolicy:
+        automated:
           prune: true
           selfHeal: true
-          {{`{{- end }}`}}
+    {{`{{- end }}`}}
