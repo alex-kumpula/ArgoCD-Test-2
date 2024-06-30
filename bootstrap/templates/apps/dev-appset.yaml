@@ -29,15 +29,13 @@ spec:
         syncOptions:
         - CreateNamespace=true
         automated:
+          {{`{{- if index . "project" }}`}}
           prune: false
+          selfHeal: false
+          {{`{{- else }}`}}
+          prune: true
+          selfHeal: true
+          {{`{{- end }}`}}
   # {{- if index . "project" }} is a way of saying "if .project exists"
   # because some config.json files might not have it defined (and we want
   # that to be okay)
-  templatePatch: |
-    {{`{{- if index . "project" }}`}}
-    spec:
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
-    {{`{{- end }}`}}
